@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>URL Shortener</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+
+<body>
+
+  <section
+    class="flex w-full items-start justify-center bg-[url('https://tailframes.com/images/squares-bg.webp')] bg-cover bg-center bg-no-repeat">
+    <div
+      class="m-auto flex max-w-5xl grow flex-col items-center justify-start gap-6 py-20 md:gap-12 lg:max-w-screen-xl px-3 sm:px-8 lg:px-16 xl:px-32">
+      <img src="https://cdn-icons-png.flaticon.com/512/3214/3214679.png" class="w-20 h-20 mx-auto animate__animated animate__fadeIn" alt="logo">
+      <div class="flex max-w-lg flex-1 flex-col items-center gap-6 text-center">
+        <h3 class="text-4xl font-bold text-slate-950 md:text-6xl animate__animated animate__fadeInUp ">Make your URLs <span class="
+            text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-pink-500 to-purple-500"> Sweet!</span></h3>
+        <h4 class="text-lg font-normal leading-7 text-slate-500 animate__animated animate__fadeInUp">Make your long urls to short and and sweet urls
+          instantly! You can add free custom handles 😎.</h4>
+        <form class="flex gap-2 animate__animated animate__fadeIn animate__delay-1s" method="post" action="{{ url_for('shorten') }}">
+          <div
+            class="inline-flex w-full flex-col items-start gap-1.5 stroke-black transition-colors duration-300 ease-in-out focus-within:stroke-blue-700">
+            <div class="relative w-full">
+              <div class="pointer-events-none absolute left-5 top-5 w-6 -translate-x-1/2 -translate-y-1/2">
+                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <g clip-path="url(#clip0_14_1931)">
+                      <path d="M39.26 24.683L19.892 44.051" stroke="#000000" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                      <path
+                        d="M27.13 22.288L39.538 9.881C40.1341 9.28492 40.8417 8.81208 41.6205 8.48948C42.3993 8.16688 43.234 8.00084 44.077 8.00084C44.92 8.00084 45.7547 8.16688 46.5335 8.48948C47.3123 8.81208 48.0199 9.28492 48.616 9.881L54.063 15.328C54.6591 15.9241 55.1319 16.6317 55.4545 17.4105C55.7771 18.1893 55.9432 19.024 55.9432 19.867C55.9432 20.71 55.7771 21.5447 55.4545 22.3235C55.1319 23.1023 54.6591 23.8099 54.063 24.406L41.656 36.814"
+                        stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path
+                        d="M31.972 46.498L24.406 54.063C23.8099 54.6591 23.1023 55.1319 22.3235 55.4545C21.5447 55.7771 20.71 55.9432 19.867 55.9432C19.024 55.9432 18.1893 55.7771 17.4105 55.4545C16.6317 55.1319 15.9241 54.6591 15.328 54.063L9.881 48.616C9.28492 48.0199 8.81208 47.3123 8.48948 46.5335C8.16688 45.7547 8.00084 44.92 8.00084 44.077C8.00084 43.234 8.16688 42.3993 8.48948 41.6205C8.81208 40.8417 9.28492 40.1341 9.881 39.538L17.446 31.972"
+                        stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <path d="M12.604 12.604L51.34 51.34" stroke="#426AB2" stroke-width="4" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_14_1931">
+                        <rect width="60" height="60" fill="white" transform="translate(6 6)"></rect>
+                      </clipPath>
+                    </defs>
+                  </g>
+                </svg>
+              </div>
+              <div  class="flex justify-center gap-2">
+                <input
+                  class="mb-0.5 rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400focus:border-blue-600 py-2.5 pl-10"
+                  id="original_url" name="original_url" placeholder="Enter Long URL" required="" type="url">
+                <input
+                  class="mb-0.5 rounded-lg border border-slate-200 px-3 text-sm font-medium placeholder-slate-400 outline-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed disabled:bg-slate-50 disabled:text-slate-400 disabled:placeholder-slate-400focus:border-blue-600 py-2.5 pl-5"
+                  id="short_id" name="short_id" placeholder="Custom handle (Optional)" type="text">
+                <button type="submit"
+                  class="group items-center justify-center whitespace-nowrap rounded-lg py-2 align-middle text-sm font-semibold leading-none transition-all duration-300 ease-in-out disabled:cursor-not-allowed bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950 h-[42px] w-full gap-2 disabled:bg-slate-100 disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-slate-100">
+                  <span>Short It</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul class="list-none flex flex-col gap-2">
+        {% for message in messages %}
+        <li class="bg-red-600 p-2 rounded-md text-white">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+      <div class="flex flex-col gap-4 md:flex-row md:gap-0 animate__animated animate__lightSpeedInRight animate__delay-3s">
+        <div class="flex items-center justify-center -space-x-4">
+          <div
+            class="relative box-content flex items-center justify-center overflow-hidden rounded-full size-10 border-white shadow-md border-[3px] bg-white z-20">
+            <img src="https://www.tailframes.com/images/avatar.webp" alt="" class="aspect-square">
+          </div>
+          <div
+            class="relative box-content flex items-center justify-center overflow-hidden rounded-full size-10 border-white shadow-md border-[3px] bg-white z-10">
+            <img src="https://www.tailframes.com/images/avatar.webp" alt="" class="aspect-square">
+          </div>
+          <div
+            class="relative box-content flex items-center justify-center overflow-hidden rounded-full size-10 border-white shadow-md border-[3px] bg-white z-0">
+            <img src="https://www.tailframes.com/images/avatar.webp" alt="" class="aspect-square">
+          </div>
+        </div>
+        <div class="bg-slate-300 max-h-screen min-h-full border-l m-auto w-8 md:mx-4 md:my-1 md:w-[unset]"></div>
+        <div class="flex flex-col items-center justify-center md:items-start">
+          <div class="flex gap-2">
+            <div class="flex items-center justify-center gap-0.5">
+              <div class="relative">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor"
+                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
+                  class="fill-amber-300 stroke-amber-300">
+                  <path
+                    d="M12 3L14.781 8.59516L21 9.4979L16.5 13.8507L17.562 20L12 17.0952L6.438 20L7.5 13.8507L3 9.4979L9.219 8.59516L12 3Z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+            <p class="text-base font-semibold">4.95/5</p>
+          </div>
+          <p class="text-sm text-slate-500">Base on over 256+ reviews</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% if request.args.get('short_url') %}
+  <div id="model" class="fixed z-10 inset-0 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>
+      <div
+        class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6">
+        <div class="sm:flex sm:items-start">
+          <div
+            class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+            <svg class="h-6 w-6 text-green-600" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+              Your URL has been shortened!
+            </h3>
+            <div class="mt-2 flex items-center animate__animated animate__tada animate__delay-1s">
+              <input type="text"
+                class="px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="{{ request.args.get('short_url') }}">
+                <button class="px-3 py-2 bg-blue-500 text-white rounded-r-md" onclick="copyToClipboard()">Copy</button>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
+          <a href="{{ request.args.get('short_url') }}" class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
+            <button type="button"
+              class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-green-500 focus:outline-none focus:shadow-outline-green transition ease-in-out duration-150 sm:text-sm sm:leading-5">
+              Visit
+            </button>
+          </a>
+          <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
+            <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5" onclick="closeModal()">Close</button>
+
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</body>
+
+</html>
+<script>
+  function copyToClipboard() {
+    var copyText = document.querySelector("input[value='{{ request.args.get('short_url') }}']");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    document.execCommand("copy");
+    alert("Copied the URL: " + copyText.value);
+}
+function closeModal() {
+    document.querySelector('#model').style.display = 'none';
+}
+
+
+
+</script>
