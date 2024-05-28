@@ -8,7 +8,7 @@ A Weather GUI App created with Python that allows you to enter a city name and r
 
 ### URL Shortner App with Flask
 A URL Shortner App created with Flask that allows you to enter a URL and retrieve a shortened URL. You can specify custom handle for the shortened URL.
-For Demo Watch Video: [Linkedin]([https://www.linkedin.com/posts/sarfarazunar_python-flask-projects-activity-7201105968934318081-aF9m?utm_source=share&utm_medium=member_desktop])
+For Demo Watch Video: [Linkedin](https://www.linkedin.com/posts/sarfarazunar_python-flask-projects-activity-7201105968934318081-aF9m?utm_source=share&utm_medium=member_desktop)
 
 ![URL Shortner App Screenshot](./assets/urlshortner1.jpg)
 
